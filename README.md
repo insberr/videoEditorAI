@@ -1,0 +1,2 @@
+# videoEditorAI
+Automatic video editor 
