@@ -5,6 +5,7 @@
 		"avformat",
 		"chdir",
 		"ffmpeg",
+		"ffprobe",
 		"giorgisio",
 		"goav"
 	]

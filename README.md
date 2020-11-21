@@ -4,7 +4,10 @@
 # Info
 A video editor that does all the work for you.
 
-Currently does nothing.
+Pull requests are welcome and much appreciated.  
+
+## Current progress
+- Splits all audio tracks from each video inputted
 
 Interested in helping? Wanna get real time updates and plans? Or even suggest a feature? Join my multipurpose programming [Discord server](https://discord.gg/PSNKV6EB9A)
 
