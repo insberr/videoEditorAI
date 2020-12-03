@@ -1,0 +1,6 @@
+Module {
+	name: 'videoEditorAI'
+	description: ''
+	version: '0.0.0'
+	dependencies: []
+}
