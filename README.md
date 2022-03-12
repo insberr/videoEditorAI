@@ -1,5 +1,4 @@
-> **videoEditorAI** | Automatic Video Editor  
-> **Status:** *Working Progress*
+> **videoEditorAI** | Automatic Video Editor
 
 # Info
 A video editor that does all the work for you.
@@ -9,7 +8,7 @@ Pull requests are welcome and much appreciated.
 ## Current progress
 - Splits all audio tracks from each video inputted
 
-Interested in helping? Wanna get real time updates and plans? Or even suggest a feature? Join my multipurpose programming [Discord server](https://discord.gg/PSNKV6EB9A)
+Join my [Discord server](https://discord.gg/gRMbZyU)
 
 ## Latest Updates
 - Changed License from MIT to GPL-3.0-or-later
@@ -17,7 +16,7 @@ Interested in helping? Wanna get real time updates and plans? Or even suggest a 
 
 
 ## Maintainers
-- [Insberr](https://github.com/insberr/)
+- [insberr](https://github.com/insberr/)
 
 
 ## License

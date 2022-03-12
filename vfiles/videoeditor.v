@@ -1,15 +1,62 @@
 module main
 
 import os
-import flag
-import src
-import src.video
+import cli
+import os.cmdline
+struct Arg {
+mut:
+	name  string
+	value string
+}
 
 fn main() {
-	/* === "Global" === */
-	working_dir := os.getwd()
+	f_args := cmdline.only_non_options(os.args[1..])
+	flags := cmdline.only_options(os.args[1..])
 
-	/* === Flags === */
+	mut args := map[string]string
+	for i, _ in flags {
+		if i >= f_args.len {
+			println('Missing args')
+			break
+		}
+		args[flags[i]] = f_args[i]
+	}
+	println(args)
+	
+	format := args['--format']
+
+	// fo := cmdline.option(os.args, '-f', cmdline.option(os.args, '--format', 'mp4'))
+	println(format)
+
+/*
+	args, _ := get_cmd_input()
+	if args['help'] == 'true' {
+		println('help')
+		return
+	}
+	println('get_cmd_input() => $args')
+	format := args['format']
+	println(format)
+	*/
+	// println(comd)
+	/*
+	flags.add_flag(cli.Flag{
+		flag: .string
+		name: 'format'
+		abbrev: 'f'
+		description: 'Format video out'
+		value: 'mp4'
+	})
+	flags.add_flag(cli.Flag{flag: .string name: 'mine' abbrev: 'm'})
+
+	// flags.parse(os.args)
+
+	format := flags.flags.get_string('format') or { return }
+	println(format)
+	*/ // === "Global" ===
+	// working_dir := os.getwd()
+	/*
+	=== Flags === 
 	mut parser := flag.new_flag_parser(os.args)
 	println(os.args)
 
@@ -41,14 +88,44 @@ fn main() {
 	println(video.cut_by_silence(work_dir))
 	printthings()
 	println(get_cmd_input())
-
+	*/
 }
 
 fn printthings() {
 	println('Thank you for using the auto video editor')
 }
 
-fn get_cmd_input() []string {
+fn get_cmd_input() (map[string]string, cli.Command) {
+	mut cmd := cli.Command{
+		name: 'videoeditor'
+		description: 'Video editor with as little human interaction as possible'
+		version: 'v0.0.1'
+	}
+
+	// Run flags
+	cmd.add_flag(cli.Flag{
+		flag: .string
+		name: 'format'
+		abbrev: 'f'
+		description: 'Format video out'
+		value: 'mp4'
+	})
+	cmd.add_flag(cli.Flag{
+		flag: .string
+		name: 'mine'
+		abbrev: 'm'
+		value: 'no'
+	})
+	cmd.parse(os.args)
+	
+	all := cmd.flags.map(Arg{it.name, it.value})
+	mut nargs := map[string]string{}
+	for arg in all {
+		nargs[arg.name] = arg.value
+	} // === "Global" ===
+	// working_dir := os.getwd()
+	return nargs, cmd // cmd.flags, cmd.args
+	/*
 	working_dir := 'this/'
 	mut parser := flag.new_flag_parser(os.args)
 
@@ -74,7 +151,7 @@ fn get_cmd_input() []string {
 	}
 
 	return args
-
+	*/
 	// return parser
 	/*
 	if help == true {
@@ -84,10 +161,9 @@ fn get_cmd_input() []string {
 	println('help: $help \n an_int: $an_int a_bool: $a_bool a_float: $a_float a_string: $a_string')
 	println(additional_args.join_lines())
 	*/
-	
-	
 }
 
+/*
 fn getargs() {
 	mut fp := flag.new_flag_parser(os.args)
 	fp.application('flag_example_tool')
@@ -114,4 +190,9 @@ fn getargs() {
 		panic('v version failed')
 	}
 	println(res.output)
+}
+*/
+fn help_msg(cmd cli.Command) {
+	println(cmd)
+	exit(1)
 }
