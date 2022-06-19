@@ -1,5 +1,6 @@
 > **videoEditorAI** | Automatic Video Editor
 
+# CURRENTLY NOT MAINTAINED
 # Info
 A video editor that does all the work for you.
 
